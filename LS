@@ -1,0 +1,74 @@
+life_simulator/
+|-- static/
+|   |-- css/
+|   |   |-- style.css
+|-- templates/
+|   |-- index.html
+|-- app.py
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#output {
+    margin-top: 20px;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+pip install flask
+<body>
+    <div class="container">
+        <h1>Life Simulator</h1>
+        <div id="output"></div>
+        <button onclick="makeDecision('Yes')">Yes</button>
+        <button onclick="makeDecision('No')">No</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+const outputDiv = document.getElementById('output');
+const decisionButtons = document.querySelectorAll('button');
+
+const decisions = [
+    "You receive a job offer in a different city. Do you accept?",
+    "You find a lost wallet on the street. Do you return it?",
+    "A friend invites you on a spontaneous road trip. Do you go?",
+    // Add more decisions as needed
+];
+
+function makeDecision(response) {
+    const decisionIndex = Math.floor(Math.random() * decisions.length);
+    const currentDecision = decisions[decisionIndex];
+
+    outputDiv.innerHTML = `<p>${currentDecision}</p><p>Your response: ${response}</p>`;
+
+    // Logic to handle the consequences of the decision goes here
+
+    // Clear previous decision after a delay
+    setTimeout(() => {
+        outputDiv.innerHTML = '';
+    }, 3000);
+}
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
