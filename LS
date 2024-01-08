@@ -27,7 +27,6 @@ body {
     <title>Life Simulator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-pip install flask
 <body>
     <div class="container">
         <h1>Life Simulator</h1>
