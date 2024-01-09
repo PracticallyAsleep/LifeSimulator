@@ -1,10 +1,10 @@
 life_simulator/
-|-- static/
-|   |-- css/
-|   |   |-- style.css
-|-- templates/
-|   |-- index.html
-|-- app.py
+ static/
+   css/
+ style.css
+ templates/
+ index.html
+ app.py
 body {
     font-family: Arial, sans-serif;
 }
